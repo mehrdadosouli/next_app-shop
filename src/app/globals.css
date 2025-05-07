@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+
+
+
+body,html {
+  box-sizing: border-box;
+  max-width:100% ;
+}
+*{
+  box-sizing: border-box;
+}
