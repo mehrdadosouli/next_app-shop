@@ -9,6 +9,10 @@ body,html {
   max-width:100% ;
   direction: rtl;
 }
+body{
+  max-width: 90%;
+  margin: auto;
+}
 *{
   box-sizing: border-box;
 }

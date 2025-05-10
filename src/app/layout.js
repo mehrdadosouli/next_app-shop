@@ -1,12 +1,14 @@
-import "./globals.css";
-import Header from "@/layouts/Header";
-import Footer from "@/layouts/Footer";
+import "../app/styles/globals.css";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-      <Header />
+        <Header />
         {children}
         <Footer />
       </body>
