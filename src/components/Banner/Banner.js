@@ -22,7 +22,7 @@ function banner() {
         const timer=setInterval(() => {
             setCurrent(prev=>prev == items.length ? 1 : prev + 1)
         }, 3000);
-        ()=>{
+        return ()=>{
             clearInterval(timer)
         }
     },[])
@@ -32,7 +32,7 @@ function banner() {
     <div className="relative h-56 overflow-hidden rounded-lg md:h-96">  
         {
             items.map((item)=>
-            <div className=" duration-700 ease-in-out" data-carousel-item>
+            <div key={item} className=" duration-700 ease-in-out" data-carousel-item>
                 <Image src={images[current - 1]} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>)
         }
