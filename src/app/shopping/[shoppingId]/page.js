@@ -46,7 +46,7 @@ async function ProductDetail({ params }) {
               </span>
             ))}
 
-            {Array(5 - totalStars)
+            {Array(stars - totalStars)
               .fill(0)
               .map((i, index) => (
                 <span key={index}>

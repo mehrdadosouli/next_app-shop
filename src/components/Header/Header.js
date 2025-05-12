@@ -6,10 +6,7 @@ import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
 function Header() {
-    let pathname=usePathname()
-    console.log(pathname);
-    
-    
+    let pathname=usePathname() 
     const [show, setShow] = useState(false)
     const clickHandler = (e) => {
         setShow(!show)
