@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '../../../lib/dbConnect';
-import Product from '../../../modules/Product';
-
+import Basket from '../../../modules/Basket';
 
 export async function GET() {
   await dbConnect();
-  const products = await Product.find({});
-  return NextResponse.json(products);
+  const basketItem = await Basket.find({});
+  return NextResponse.json(basketItem);
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import CardProduct from '../CardProduct/CardProduct'
 
 async function Products() {
-    const response=await fetch("https://fakestoreapi.com/products",{
+    const response=await fetch("http://localhost:3000/api/products",{
       cache:"no-store"
     })
     .then(res=>res.json())
