@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 function CardProduct({ data }) {
-  console.log(data);
 
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <Link href="#" className="mx-auto">
+      <Link href={`shopping/${data.id}`} className="mx-auto">
         <Image
           className="p-8 rounded-t-lg object-cover "
           src={data.image}
           width={200}
           height={150}
+          alt=""
         />
       </Link>
       <div className="px-5 pb-5">
-        <Link href="#">
+        <Link href={`shopping/${data.id}`}>
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {data.title}
           </h5>
