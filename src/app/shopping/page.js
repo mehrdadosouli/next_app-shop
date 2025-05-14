@@ -1,9 +1,7 @@
 import Products from "@/components/Products/Products"
-
-
-function Shopping() {
+function Shopping({searchTerm}) {
   return (
-    <div><Products /></div>
+    <div><Products searchTerm={searchTerm} /></div>
   )
 }
 

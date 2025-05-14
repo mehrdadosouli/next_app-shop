@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function ProductDetail({ params }) {
+  
   const { shoppingId } = params;
   const response = await fetch("http://localhost:3000/api/products", {
     cache: "no-store",
@@ -14,7 +15,7 @@ async function ProductDetail({ params }) {
   
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <Link href={`shopping/${id}`}>
+      <Link href={`/shopping/${id}`}>
         <Image
           className="p-8 rounded-t-lg object-cover "
           src={image}
@@ -23,6 +24,12 @@ async function ProductDetail({ params }) {
           alt=""
         />
       </Link>
+      <span className="p-4">
+      <Link href={`/shopping?category=${category.replace(/ /g,"_") }`} className="hover:text-blue-400 dark:text-white">
+         {category} 
+      </Link>
+      : category 
+      </span>
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {title}

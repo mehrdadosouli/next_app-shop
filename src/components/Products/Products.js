@@ -1,7 +1,9 @@
 import React from 'react'
 import CardProduct from '../CardProduct/CardProduct'
 
-async function Products() {
+async function Products({searchTerm}) {
+
+  
     const response=await fetch("http://localhost:3000/api/products",{
       cache:"no-store"
     })

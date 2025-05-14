@@ -12,7 +12,7 @@ async function Basket() {
       {
         data.map(item=>
         <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-          <Link href="/">
+          <Link href={`s/hopping/${item.id}`}>
             <Image
               className="p-8 rounded-t-lg object-cover"
               src={item.image}
