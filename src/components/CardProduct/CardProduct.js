@@ -1,7 +1,11 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
-function CardProduct({ data }) {
+import { useContext } from "react";
+import { CartContext } from "@/app/contexts/cartContext";
 
+function CardProduct({ data }) {
+let {addToCard} =useContext(CartContext)
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <Link href={`shopping/${data.id}`} className="mx-auto">
@@ -77,6 +81,7 @@ function CardProduct({ data }) {
           </span>
           <Link
             href="#"
+            onClick={()=>addToCard(data)}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Add to cart
