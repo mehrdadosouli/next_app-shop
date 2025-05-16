@@ -1,7 +1,9 @@
 import Products from "@/components/Products/Products"
-function Shopping({searchTerm}) {
+async function Shopping({searchParams}) {
+  const params=await searchParams;
+  
   return (
-    <div><Products searchTerm={searchTerm} /></div>
+    <div><Products params={params} /></div>
   )
 }
 

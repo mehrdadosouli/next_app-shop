@@ -7,11 +7,15 @@ export async function GET(req) {
   
   const query = url.searchParams;
   const searchTerm = query.get("category");  
+  console.log(req);
+  
   try {
     await dbConnect();
     let products 
-    if (searchTerm) {
-       products = await Product.find({category});
+    if (searchTerm) {    
+      console.log(searchTerm);
+       
+       products = await Product.find({category:searchTerm});
     }else{
        products = await Product.find({});
     }

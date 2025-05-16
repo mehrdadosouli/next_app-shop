@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function ProductDetail({ params }) {
+
   
-  const { shoppingId } = params;
+  const { shoppingId } =await params;
   const response = await fetch("http://localhost:3000/api/products", {
     cache: "no-store",
   }).then((res) => res.json());
@@ -25,7 +26,7 @@ async function ProductDetail({ params }) {
         />
       </Link>
       <span className="p-4">
-      <Link href={`/shopping?category=${category.replace(/ /g,"_") }`} className="hover:text-blue-400 dark:text-white">
+      <Link href={`/shopping?category=${category}`} className="hover:text-blue-400 dark:text-white">
          {category} 
       </Link>
       : category 

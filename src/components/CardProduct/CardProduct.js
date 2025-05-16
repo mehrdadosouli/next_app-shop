@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { CartContext } from "@/app/contexts/cartContext";
+import { CartContext } from "@/app/contexts/CartContext";
 
 function CardProduct({ data }) {
 let {addToCard} =useContext(CartContext)

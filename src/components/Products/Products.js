@@ -1,10 +1,9 @@
 import React from 'react'
 import CardProduct from '../CardProduct/CardProduct'
 
-async function Products({searchTerm}) {
-
+async function Products({params}) {
   
-    const response=await fetch("http://localhost:3000/api/products",{
+    const response=await fetch(`http://localhost:3000/api/products${params ? `?category=${params?.category}` : ""}`,{
       cache:"no-store"
     })
     .then(res=>res.json())
