@@ -5,14 +5,14 @@ async function ProductDetail({ params }) {
 
   
   const { shoppingId } =await params;
-  const response = await fetch("http://localhost:3000/api/products", {
+ 
+  const response = await fetch(`http://localhost:3000/api/products/${shoppingId}`, {
     cache: "no-store",
   }).then((res) => res.json());
-
-  let filterProduct = response.find((item) => item.id == shoppingId);
-  let { id, image, title, price, description, category, rating } =filterProduct;
+  
+  let { id, image, title, price, description, category, rating } =response;
   let stars = 5;
-  let totalStars =stars - (rating.rate > 2.5 ? Math.floor(rating.rate) : Math.ceil(rating.rate));
+  let totalStars =stars - (rating?.rate > 2.5 ? Math.floor(rating.rate) : Math.ceil(rating.rate));
   
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
