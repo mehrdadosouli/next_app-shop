@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-async function ProductDetail({ params }) {
-
-  
+async function ProductDetail({ params }) {  
   const { shoppingId } =await params;
- 
-  const response = await fetch(`http://localhost:3000/api/products/${shoppingId}`, {
+  const response = await fetch(`http://localhost:3000/api/products/${Number(shoppingId)}`, {
     cache: "no-store",
   }).then((res) => res.json());
   

@@ -4,17 +4,13 @@ import Product from "../../../modules/Product";
 
 export async function GET(req) {
   const url=new URL(req.url)  
-  
   const query = url.searchParams;
-  const searchTerm = query.get("category");  
-  console.log(req);
-  
+  const searchTerm= query.get("category");
+   
   try {
     await dbConnect();
     let products 
-    if (searchTerm) {    
-      console.log(searchTerm);
-       
+    if (searchTerm) {           
        products = await Product.find({category:searchTerm});
     }else{
        products = await Product.find({});

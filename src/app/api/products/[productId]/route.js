@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 import dbConnect from "../../../../lib/dbConnect";
 import Product from "../../../../modules/Product";
 
-export async function GET(req, {params} ) {
+export async function GET(req, {params} ) {  
   const { productId } =await params;
-  
   await dbConnect();
 
   const product = await Product.findOne({ id: Number(productId) });
