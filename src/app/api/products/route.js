@@ -10,7 +10,7 @@ export async function GET(req) {
   try {
     await dbConnect();
     let products 
-    if (searchTerm == "undefined") {           
+    if (!searchTerm || searchTerm == "undefined") {           
       products = await Product.find({});
     }else{
       products = await Product.find({category:searchTerm});
