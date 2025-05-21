@@ -27,6 +27,11 @@ const updateQuantity = (productId, newQuantity) => {
         return prev.map(item => item.id == productId) ? { ...item, quantity: newQuantity } : item
     })
 }
+const minusFromCard = (product) => {
+    setCart(prev => {
+        return prev.map(item => item.id == product.id ? { ...item, quantity: item.quantity - 1 } : item)
+    })
+}
 const total = () => {
     let allTotal = 0;
     cart.map(item => {
@@ -37,7 +42,7 @@ const total = () => {
 
 
     return (
-        <CartContext.Provider value={{ cart, addToCard, removeFromCard, updateQuantity, total }}>
+        <CartContext.Provider value={{ cart, addToCard, removeFromCard, updateQuantity, total ,minusFromCard }}>
             {children}
         </CartContext.Provider>
     )
