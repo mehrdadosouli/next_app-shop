@@ -1,18 +1,18 @@
 "use client"
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 import Link from "next/link";
 import Image from "next/image";
-import { CartContext } from "../contexts/CartContext";
-import { useContext } from "react";
 
-async function Basket() {
-  let {cart, addToCard, removeFromCard, updateQuantity, total} =useContext(CartContext) 
+function Basket() {
+  let {cart, addToCard} =useContext(CartContext) 
   return (
     <div className="flex gap-10">
       <div className="w-1/2 flex flex-col gap-10">
       {
         cart.length ? 
         cart.map(item=>
-          <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+          <div key={item.id} className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <Link href={`s/hopping/${item.id}`}>
               <Image
                 className="p-8 rounded-t-lg object-cover"

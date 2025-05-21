@@ -4,19 +4,22 @@ import Product from "../../../modules/Product";
 
 export async function GET(req) {
   const url = new URL(req.url);
-  const query = url.searchParams;
-  const searchTerm = query.get("category");
+  const searchTerm = url.searchParams.get("category");
   
   try {
     await dbConnect();
-    let products 
-    if (!searchTerm || searchTerm == "undefined") {           
+    let products;
+    if (!searchTerm || searchTerm === "undefined") {
       products = await Product.find({});
-    }else{
-      products = await Product.find({category:searchTerm});
-    }      
-    return NextResponse.json(products);
+    } else {
+      products = await Product.find({ category: searchTerm });
+    }
+    return new NextResponse(JSON.stringify(products), { status: 200 });
   } catch (error) {
-    return NextResponse.json({error:"حطا در گرفتن محصولات"});
+    console.error("Error fetching products:", error);
+    return new NextResponse(
+      JSON.stringify({ error: "حطا در گرفتن محصولات" }),
+      { status: 500 }
+    );
   }
 }
