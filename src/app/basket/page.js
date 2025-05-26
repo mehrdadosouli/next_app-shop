@@ -13,7 +13,7 @@ function Basket() {
         cart.length ? 
         cart.map(item=>
           <div key={item.id} className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <Link href={`s/hopping/${item.id}`}>
+            <Link href={`shopping/${item.id}`}>
               <Image
                 className="p-8 rounded-t-lg object-cover"
                 src={item.image}
