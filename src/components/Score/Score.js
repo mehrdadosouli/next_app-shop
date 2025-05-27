@@ -1,6 +1,6 @@
 import React from "react";
 
-function Score({rating}) {
+function Score({rating}) { 
     const starsCount = 5;
     const ratingScore = rating?.rate || 0;
   const totalStars = starsCount - (ratingScore > 2.5 ? Math.floor(ratingScore) : Math.ceil(ratingScore));
