@@ -1,12 +1,10 @@
-import ProductsDashboard from "@/components/Dashboard/Products/ProductsDashboard";
-import Link from "next/link";
+import ProductsDashboard from '@/components/Dashboard/Products/ProductsDashboard';
+import Link from 'next/link';
 
 export default function Dashboard() {
-
-
   return (
     <div className="flex gap-10">
-     <ProductsDashboard />
+      <ProductsDashboard />
       <aside id="default-sidebar" className="w-64 h-screen " aria-label="Sidebar">
         <div className="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <ul className="space-y-2 font-medium">
@@ -40,11 +38,7 @@ export default function Dashboard() {
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 3h18v18H3V3z"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v18H3V3z" />
                   </svg>
                   <span className="ml-3">Dashboard</span>
                 </Link>
@@ -62,11 +56,7 @@ export default function Dashboard() {
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 16l4-4m0 0l-4-4m4 4H7"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7" />
                   </svg>
                   <span className="ml-3">Logout</span>
                 </Link>

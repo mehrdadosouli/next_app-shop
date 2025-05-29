@@ -3,12 +3,9 @@ import dbConnect from "../../../../lib/dbConnect";
 import Product from "../../../../modules/Product";
 
 export async function GET(req, { params }) {
-  const { productId } =await params;
   await dbConnect();
-  console.log(await params);
-  
-  const product = await Product.findOne({ id: Number(productId) });
-
+  const { productId } = params; 
+  const product = await Product.findOne({ _id: productId });
   if (!product) {
     return NextResponse.json({ error: "محصول پیدا نشد" }, { status: 404 });
   }

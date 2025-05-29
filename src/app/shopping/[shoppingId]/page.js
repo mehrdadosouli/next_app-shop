@@ -36,10 +36,6 @@ function ProductDetail({ params }) {
   }
 
   const { id, image, title, price, description, category, rating } = product;
-  // const starsCount = 5;
-  // const ratingScore = rating?.rate || 0;
-  // const totalStars = starsCount - (ratingScore > 2.5 ? Math.floor(ratingScore) : Math.ceil(ratingScore));
-
   return (
     <div className="w-full flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <Link href={`/shopping/${id}`}>

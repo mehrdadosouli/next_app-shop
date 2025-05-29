@@ -16,5 +16,17 @@
       "createTheme(?:<\\w+>)?\\s*\\(([^)]*)\\)",
       "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"
     ]
-  ]
+  ],
+
+  "editor.formatOnSave": true,
+
+  // Prettier settings:
+  "prettier.printWidth": 140,          // عرض خط بزرگ‌تر (از 100 بیشتر)
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.jsxBracketSameLine": false,
+  "prettier.trailingComma": "es5",
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "always",
+  "prettier.proseWrap": "never"
 }

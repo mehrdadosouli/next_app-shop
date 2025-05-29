@@ -1,14 +1,28 @@
+"use client";
 import Score from "@/components/Score/Score";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-async function ProductsDashboard() {
-    const response=await fetch("http://localhost:3000/api/products")
-    .then(res=>res.json())
-    .then(data=>data)
-    
-    console.log(response);
-    
+
+function ProductsDashboard() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const editHandler = (item) => {
+    console.log("Editing item:", item);
+  };
   return (
    <div className="w-full mt-10">
+    <div className="flex justify-end">
+      <Link href="/dashboard/newproduct" className="bg-primary-300 p-2 m-2 rounded-xl">
+        <button>Add New Product</button>
+      </Link>
+    </div>
       <table className="table-auto w-full border-b-2-collapse border border-gray-400">
         <thead className="border-b-2">
           <tr>
@@ -20,10 +34,10 @@ async function ProductsDashboard() {
           </tr>
         </thead>
         <tbody className="text-center">
-          {response.map((item) => (
-            <tr key={item.id}>
+          {products.map((item,index) => (
+            <tr key={item._id}>
               <td className="border-b-2 px-2 py-6 ">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <svg xmlns="http://www.w3.org/2000/svg" onClick={() => editHandler(item)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 hover:cursor-pointer">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                 </svg>
               </td>
@@ -36,7 +50,7 @@ async function ProductsDashboard() {
               <td className="border-b-2 px-2 py-1">
                 {item.title.length > 10 ? item.title.slice(0, 50) + "..." : item.title}
               </td>
-              <td className="border-b-2 px-2 py-1">{item.id}</td>
+              <td className="border-b-2 px-2 py-1">{index + 1}</td>
             </tr>
           ))}
         </tbody>

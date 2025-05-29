@@ -1,27 +1,21 @@
-"use client"
-import Link from "next/link";
-import Image from "next/image";
-import { useContext } from "react";
-import { CartContext } from "@/app/contexts/CartContext";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useContext, useState } from 'react';
+import { CartContext } from '@/app/contexts/CartContext';
 
 function CardProduct({ data }) {
-let {addToCard} =useContext(CartContext)
+  let { addToCard } = useContext(CartContext);
+  const isValidSrc=typeof data.image == "string" && (data.image.startsWith("http://") || data.image.startsWith("https://") || data.image.startsWith("/"))
+  const [imgSrc, setImgSrc] = useState(isValidSrc? data.image : "/img.jpg");
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <Link href={`shopping/${Number(data.id)}`} className="mx-auto">
-        <Image
-          className="p-8 rounded-t-lg object-cover "
-          src={data.image}
-          width={200}
-          height={150}
-          alt=""
-        />
+      <Link href={`shopping/${data._id}`} className="mx-auto">
+        <Image className="p-8 rounded-t-lg object-cover" src={imgSrc} width={200} height={150} alt={data.title || "product image"} />
       </Link>
       <div className="px-5 pb-5">
-        <Link href={`shopping/${Number(data.id)}`}>
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {data.title}
-          </h5>
+        <Link href={`shopping/${data._id}`}>
+          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{data.title}</h5>
         </Link>
         <div className="flex items-center mt-2.5 mb-5">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -72,15 +66,13 @@ let {addToCard} =useContext(CartContext)
             </svg>
           </div>
           <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">
-            5.0
+            {data.rating.rate}
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 dark:text-white">
-            $599
-          </span>
+          <span className="text-2xl font-bold text-gray-900 dark:text-white">{data.price.toLocaleString('fa-IR') + ' تومان'}</span>
           <button
-            onClick={()=>addToCard(data)}
+            onClick={() => addToCard(data)}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Add to cart
