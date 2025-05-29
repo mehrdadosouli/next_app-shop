@@ -10,9 +10,12 @@ function Newproduct() {
     title: '',
     price: '',
     description: '',
+    rating: { rate: '3' },
   });
   async function formHandler(prevState, form) {
     const formData = Object.fromEntries(form.entries());
+    console.log(formData);
+
     if (!formData.title) {
       notify('لطفا اسم را وارد کنید');
       return;
@@ -24,6 +27,11 @@ function Newproduct() {
     if (!formData.description) {
       notify('لطفا توضیحات را وارد کنید');
       return;
+    }
+    if (formData.rating) {
+      formData.rating = {
+        rate: parseFloat(formData.rating), 
+      };
     }
     if (formData.title && formData.price && formData.description) {
       try {
@@ -49,10 +57,7 @@ function Newproduct() {
       <ToastContainer />
       <form className="max-w-sm mx-auto" action={actionState}>
         <div className="mb-5">
-          <label
-            htmlFor="title"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your title
           </label>
           <input
@@ -63,10 +68,7 @@ function Newproduct() {
           />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="image"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="image" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your image
           </label>
           <input
@@ -77,18 +79,27 @@ function Newproduct() {
           />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="price"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Your price
           </label>
           <input
             type="number"
             name="price"
             id="price"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+           focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
+        </div>
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your rating</label>
+        <div className="flex items-start mb-5">
+          <select className="border rounded-lg" name="rating" defaultValue="3">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
         <div className="flex items-start mb-5">
           <div className="flex items-center h-5">
