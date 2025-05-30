@@ -3,7 +3,7 @@ import Link from "next/link";
 
 async function CategoryProduct({params}) {
     const {categoryName}=params
-    const res=await fetch(`http://localhost:3000/api/products`)
+    const res=await fetch(`/api/products`)
     .then(res=>res.json()) 
     
   return (
