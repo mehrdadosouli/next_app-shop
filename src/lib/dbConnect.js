@@ -5,7 +5,8 @@ async function dbConnect() {
     return;
   }
 
-  return mongoose.connect('mongodb://localhost:27017/next-app', {
+  // return mongoose.connect('mongodb://localhost:27017/next-app', {
+  return mongoose.connect('mongodb+srv://mehrdadosoulisaran:Mehrdadosoulisaran@next-app.elehtpg.mongodb.net/?retryWrites=true&w=majority&appName=Next-app', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
