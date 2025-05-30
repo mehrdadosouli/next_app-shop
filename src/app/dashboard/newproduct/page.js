@@ -35,7 +35,7 @@ function Newproduct() {
     }
     if (formData.title && formData.price && formData.description) {
       try {
-        const res = await fetch('/api/products', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
