@@ -1,7 +1,7 @@
 import CardProduct from '../CardProduct/CardProduct';
 
 async function Products({ params }) {
-  const response = await fetch(`/api/products${params ? `?category=${params?.category}` : ''}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products${params ? `?category=${params?.category}` : ''}`, {
     cache: 'no-store',
   }).then((res) => res.json());
 
