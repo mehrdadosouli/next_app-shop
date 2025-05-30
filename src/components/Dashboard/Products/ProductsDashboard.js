@@ -9,7 +9,7 @@ function ProductsDashboard() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -19,7 +19,7 @@ function ProductsDashboard() {
   };
   const deleteHandler = async (item) => {
     try {
-      const res = await fetch('/api/products', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
