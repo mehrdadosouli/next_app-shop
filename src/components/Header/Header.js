@@ -39,7 +39,7 @@ function Header() {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="w-full bg-white border-gray-200 dark:bg-gray-900 md:static fixed top-0 left-0 right-0 mx-auto z-50 ">
         <div className="max-w-screen-xl flex flex-row-reverse flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex items-center gap-3">
             {/* دکمه سبد خرید */}
@@ -84,8 +84,19 @@ function Header() {
                           <Image className="rounded-t-lg object-cover" src={item.image} width={100} height={100} alt={item.title} />
                         ) : (
                           <div className="w-24 h-24 text-gray-400 flex items-center justify-center rounded-t-lg bg-gray-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13L17 13M7 13h10"/>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-16 h-16"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13L17 13M7 13h10"
+                              />
                             </svg>
                           </div>
                         )}
@@ -127,74 +138,78 @@ function Header() {
               </div>
             )}
 
-            <Image src="/img2.jpg" width={40} height={40} className="h-8 rounded-full" alt="Flowbite Logo" />
+            <div className="relative flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
+              <button
+                id="user-menu-button"
+                onClick={toggleUserMenu}
+                type="button"
+                className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-700 dark:focus:ring-gray-600"
+                aria-expanded={showUserMenu}
+                aria-label="User menu"
+              >
+                <span className="sr-only">Open user menu</span>
+                <Image className="w-8 h-8 rounded-full" src={img1} width={50} height={50} alt="user photo" />
+              </button>
+
+              {/* منوی کاربری */}
+              <div
+                id="user-dropdown"
+                className={`z-50 absolute top-10 right-0 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 ${
+                  showUserMenu ? '' : 'hidden'
+                }`}
+              >
+                <div className="px-4 py-3">
+                  <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                  <span className="block text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                </div>
+                <ul className="py-2" aria-labelledby="user-menu-button">
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      داشبورد
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Settings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Earnings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      خروج از حساب کاربری
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Mehrdad</span>
           </div>
 
           {/* منوی کاربری */}
-          <div className="relative flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
-            <button
-              id="user-menu-button"
-              onClick={toggleUserMenu}
-              type="button"
-              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-700 dark:focus:ring-gray-600"
-              aria-expanded={showUserMenu}
-              aria-label="User menu"
-            >
-              <span className="sr-only">Open user menu</span>
-              <Image className="w-8 h-8 rounded-full" src={img1} width={50} height={50} alt="user photo" />
-            </button>
-
-            {/* منوی کاربری */}
-            <div
-              id="user-dropdown"
-              className={`z-50 absolute top-10 right-0 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 ${
-                showUserMenu ? '' : 'hidden'
-              }`}
-            >
-              <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                <span className="block text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-              </div>
-              <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <Link
-                    href="/dashboard"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    داشبورد
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/dashboard"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Settings
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/dashboard"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Earnings
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    خروج از حساب کاربری
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
 
           {/* منوی اصلی */}
-          <div className={`items-center justify-between ${!isOpenMenu && 'hidden'} w-full md:flex md:w-auto md:order-1`} id="navbar-user">
+          <div
+            className={`items-center justify-between ${
+              !isOpenMenu && 'hidden'
+            } w-[80%] md:flex md:w-[50%] md:static absolute top-10 left-0 right-0 mx-auto`}
+            id="navbar-user"
+          >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link

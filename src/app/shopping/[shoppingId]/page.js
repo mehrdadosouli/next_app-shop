@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { CartContext } from "@/app/contexts/CartContext";
-import {getProductDetails} from "../../../components/getProductDetails/getProductDetails";
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect, useContext,use } from "react";
-import Score from "@/components/Score/Score";
+import { CartContext } from '@/app/contexts/CartContext';
+import { getProductDetails } from '../../../components/getProductDetails/getProductDetails';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState, useEffect, useContext, use } from 'react';
+import Score from '@/components/Score/Score';
 function ProductDetail({ params }) {
   const { addToCard } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const unwrappedParams = use(params);
   const { shoppingId } = unwrappedParams;
-  
+
   useEffect(() => {
     async function fetchProduct() {
       try {
@@ -39,22 +39,13 @@ function ProductDetail({ params }) {
   return (
     <div className="w-full flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <Link href={`/shopping/${id}`}>
-        <Image
-          className="p-8 rounded-t-lg object-cover"
-          src={image}
-          width={200}
-          height={150}
-          alt=""
-        />
+        <Image className="rounded-3xl mt-5 mr-5 " src={image} width={300} height={150} alt="" />
       </Link>
       <span className="p-4">
-        <Link
-          href={`/shopping?category=${category}`}
-          className="hover:text-blue-400 dark:text-white"
-        >
+         category : 
+        <Link href={`/shopping?category=${category}`} className="hover:text-blue-400 dark:text-white">
           {category}
         </Link>
-        : category
       </span>
       <div className="px-5 pb-5">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>

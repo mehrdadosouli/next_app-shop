@@ -1,8 +1,8 @@
-"use client";
-import Image from "next/image";
-import img from "../../../public/img.jpg";
-import img2 from "../../../public/img2.jpg";
-import { useEffect, useState } from "react";
+'use client';
+import Image from 'next/image';
+import img from '../../../public/img.jpg';
+import img2 from '../../../public/img2.jpg';
+import { useEffect, useState } from 'react';
 
 function Banner() {
   const [current, setCurrent] = useState(1);
@@ -18,31 +18,24 @@ function Banner() {
   const handleIndicatorClick = (item) => {
     setCurrent(item);
   };
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setCurrent((prev) => (prev == items.length ? 1 : prev + 1));
-//     }, 3000);
-//     return () => {
-//       clearInterval(timer);
-//     };
-//   }, []);
+  //   useEffect(() => {
+  //     const timer = setInterval(() => {
+  //       setCurrent((prev) => (prev == items.length ? 1 : prev + 1));
+  //     }, 3000);
+  //     return () => {
+  //       clearInterval(timer);
+  //     };
+  //   }, []);
   return (
-    <div
-      id="default-carousel"
-      className="relative w-full"
-      data-carousel="slide"
-    >
+    <div id="default-carousel" className="relative w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-          <div
-            className=" duration-700 ease-in-out"
-            data-carousel-item
-          >
-            <Image
-              src={images[current - 1]}
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              alt="image"
-            />
-          </div>
+        <div className=" duration-700 ease-in-out" data-carousel-item>
+          <Image
+            src={images[current - 1]}
+            className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            alt="image"
+          />
+        </div>
       </div>
 
       <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
@@ -52,11 +45,9 @@ function Banner() {
             key={item}
             type="button"
             className={`w-3 h-3 cursor-pointer rounded-full ${
-              item == current
-                ? "bg-white dark:bg-gray-800"
-                : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+              item == current ? 'bg-white dark:bg-gray-800' : 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800'
             }`}
-            aria-current={`${item == current ? "true" : "false"}`}
+            aria-current={`${item == current ? 'true' : 'false'}`}
             aria-label={`Slide ${current}`}
           ></button>
         ))}
@@ -76,13 +67,7 @@ function Banner() {
             fill="none"
             viewBox="0 0 6 10"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 1 1 5l4 4"
-            />
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
           </svg>
           <span className="sr-only">Previous</span>
         </span>
@@ -101,13 +86,7 @@ function Banner() {
             fill="none"
             viewBox="0 0 6 10"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 9 4-4-4-4"
-            />
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
           </svg>
           <span className="sr-only">Next</span>
         </span>

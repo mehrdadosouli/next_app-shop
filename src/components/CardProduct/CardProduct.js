@@ -9,8 +9,7 @@ function CardProduct({ data }) {
   console.log(data);
 
   let { addToCard } = useContext(CartContext);
-  const isValidSrc =
-    typeof data.image == 'string' && (data.image.startsWith('http://') || data.image.startsWith('https://') || data.image.startsWith('/'));
+  const isValidSrc = typeof data.image == 'string' && (data.image.startsWith('http://') || data.image.startsWith('https://') || data.image.startsWith('/'))
   const [imgSrc, setImgSrc] = useState(isValidSrc ? data.image : null);
   return (
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
