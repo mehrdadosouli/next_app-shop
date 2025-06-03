@@ -15,7 +15,7 @@ function CardProduct({ data }) {
     <div className="w-full flex flex-col justify-between  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <Link href={`shopping/${data._id}`} className="mx-auto">
         {imgSrc ? (
-          <Image className="rounded-t-lg object-cover" src={imgSrc} width={100} height={100} alt={data.title} />
+          <Image className="rounded-t-lg object-cover" src={imgSrc} width={500} height={100} alt={data.title} />
         ) : (
           <div className="w-24 h-24 text-gray-400 flex items-center justify-center rounded-t-lg bg-gray-100">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
